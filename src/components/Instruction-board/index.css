@@ -1,0 +1,34 @@
+.card {
+  transition: height 0.5s ease-in-out;
+  will-change: height;
+}
+
+.card-text {
+  min-width: 236px;
+  min-height: 350px;
+}
+
+h4 {
+  display: flex;
+  justify-content: center;
+}
+
+ul {
+  padding-left: 0px;
+}
+
+.li-content {
+  height: 25px;
+  text-align: left;
+}
+
+span {
+  display: flex;
+  justify-content: left;
+}
+
+.error {
+  width: 100%;
+  margin-bottom: 10px;
+  color: red;
+}
