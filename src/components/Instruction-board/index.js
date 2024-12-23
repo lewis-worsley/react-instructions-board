@@ -10,30 +10,37 @@ export default function InstructionBoard() {
 	};
 
 	const addInstruction = (event) => {
-		event.preventDefault()
+		event.preventDefault();
 		setErrMsg("");
-		showInstructionError();
-		instructions.push(instruction)
-	};
-
-	const showInstructionError = () => {
-		setErrMsg("Please enter an instruction.");
+		if (instruction.trim() === "") {
+			setErrMsg("Please enter an instruction.");
+			setTimeout(() => {
+				setErrMsg("");
+			}, 3000);
+		} else {
+			setInstructions([...instructions, instruction]);
+			setInstruction("");
+		}
 	};
 
 	const swapDown = (index) => {
-		let temp = instructions;
-		let temp2 = temp[index];
-		temp[index] = temp[index + 1];
-		temp[index + 1] = temp2;
-		instructions = temp
+		if (index < instructions.length - 1) {
+			const newInstructions = [...instructions];
+			const temp = newInstructions[index];
+			newInstructions[index] = newInstructions[index + 1];
+			newInstructions[index + 1] = temp;
+			setInstructions(newInstructions);
+		}
 	};
 
 	const swapUp = (index) => {
-		let temp = instructions;
-		let temp2 = temp[index];
-		temp[index] = temp[index - 1];
-		temp[index - 1] = temp2;
-		instructions = temp
+		if (index > 0) {
+			const newInstructions = [...instructions];
+			const temp = newInstructions[index];
+			newInstructions[index] = newInstructions[index - 1];
+			newInstructions[index - 1] = temp;
+			setInstructions(newInstructions);
+		}
 	};
 
 	return (
